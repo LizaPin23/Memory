@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardConfig", menuName = "CardConfigs")]
+[CreateAssetMenu(fileName = "CardConfig", menuName = "Memory/CardConfigs")]
 public class CardConfig : ScriptableObject 
 {
     [SerializeField] private Sprite _photo;

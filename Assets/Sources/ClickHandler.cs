@@ -8,11 +8,9 @@ using UnityEngine.EventSystems;
 public class ClickHandler : MonoBehaviour, IPointerClickHandler
 {
     public event Action Clicked;
-    [SerializeField] public Card _card;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Clicked?.Invoke();
-        //_card.OnClick();
     }
 }
