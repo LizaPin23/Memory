@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Card : MonoBehaviour
 {
     [SerializeField] private ClickHandler _clickHandler;
+    public event Action ChangeCard;
+
 
     private void Awake()
     {
@@ -15,5 +18,6 @@ public class Card : MonoBehaviour
     private void OnClick()
     {
         Debug.Log("Карточка нажата");
+       // ChangeCard?.Invoke();
     }
 }
