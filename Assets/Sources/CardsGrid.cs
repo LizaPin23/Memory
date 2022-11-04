@@ -16,6 +16,12 @@ public class CardsGrid
     {
         float evenOffset = offset.x / 2 * (1 - cardsCount % 2);
         float baseX = offset.x * cardsCount / 2 + evenOffset;
+        float baseY = 0;
+        for(int i = 0; i < cardsCount; i++)
+        {
+            _positions.Add(new Vector2(baseX, baseY));
+            baseX += offset.x;
+        }
 
     }
 
