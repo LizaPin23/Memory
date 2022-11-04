@@ -23,19 +23,13 @@ public class Card : MonoBehaviour
     {
         _renderer.sprite = config.photo;
         _iD = config.iD;
-        _effect.Play();
         SetRevealed(false);
     }
 
     private void OnClick()
     {
         SetRevealed(true);
-       //ChangeCard?.Invoke();
-
-        if()
-        {
-
-        }
+        _effect.Play();
     }
 
     private void SetRevealed(bool value)
