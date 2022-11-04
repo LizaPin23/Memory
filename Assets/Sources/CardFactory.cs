@@ -7,12 +7,12 @@ public class CardFactory : MonoBehaviour
     [SerializeField] private Card _template;
     [SerializeField] private Transform _root;
 
-    public Card Create(CardConfig config, Vector3 position)
+    public Card Create(CardConfig config, CardsGrid grid)
     {
         Card card = Instantiate(_template, _root);
 
         card.Initialize(config);
-        card.transform.position = position;
+        card.transform.position = grid.GetRandomPosition();
 
         return card;
     }

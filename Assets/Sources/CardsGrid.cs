@@ -10,19 +10,27 @@ public class CardsGrid
     {
         _positions = new List<Vector2>(cardsCount);
 
+        Vector2 basePosition = GetBasePosition(cardsCount, offset);
+        CreateRow(basePosition.x, cardsCount, offset.x, basePosition.y);
     }
 
-    private void ConfigureGrid(int cardsCount, Vector2 offset)
+    private Vector2 GetBasePosition(int cardsCount, Vector2 offset)
     {
         float evenOffset = offset.x / 2 * (1 - cardsCount % 2);
-        float baseX = offset.x * cardsCount / 2 + evenOffset;
-        float baseY = 0;
-        for(int i = 0; i < cardsCount; i++)
-        {
-            _positions.Add(new Vector2(baseX, baseY));
-            baseX += offset.x;
-        }
+        float baseX = -offset.x * cardsCount / 2 - evenOffset;
 
+        //TODO y 
+
+        return new Vector2(baseX, 0);
+    }
+
+    private void CreateRow(float baseX, int cardsInRow, float offset, float y)
+    {
+        for(int i = 0; i < cardsInRow; i++)
+        {
+            _positions.Add(new Vector2(baseX, y));
+            baseX += offset;
+        }
     }
 
 
