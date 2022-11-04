@@ -7,7 +7,10 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour
 {
     [SerializeField] private ClickHandler _clickHandler;
+    [SerializeField] private ParticleSystem _effect;
     [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private SpriteRenderer _rendererCardBack;
+    private string _iD;
     public event Action ChangeCard;
 
 
@@ -19,11 +22,24 @@ public class Card : MonoBehaviour
     public void Initialize(CardConfig config)
     {
         _renderer.sprite = config.photo;
+        _iD = config.iD;
+        _effect.Play();
+        SetRevealed(false);
     }
 
     private void OnClick()
     {
-        Debug.Log("Карточка нажата");
-       // ChangeCard?.Invoke();
+        SetRevealed(true);
+       //ChangeCard?.Invoke();
+
+        if()
+        {
+
+        }
+    }
+
+    private void SetRevealed(bool value)
+    {
+        _rendererCardBack.enabled =!value;
     }
 }
