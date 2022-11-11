@@ -10,20 +10,24 @@ public class CardsGrid
     {
         _positions = new List<Vector2>(cardsCount);
 
-        Vector2 basePosition = GetBasePosition(cardsCount, colsCount, offset);
-
-        CreateRow(basePosition.x, cardsCount, offset.x, basePosition.y);
-
-    }
-
-    private Vector2 GetBasePosition(int cardsCount, int colsCount, Vector2 offset)
-    {
         int rowsCount = cardsCount / colsCount;
         int colsInExtraRow = cardsCount % colsCount;
 
         if (colsInExtraRow != 0)
             rowsCount++;
 
+        Vector2 basePosition = GetBasePosition(rowsCount, colsCount, offset);
+
+        for(int i = 0; i < rowsCount; i++)
+        {
+            float positionY = basePosition.y - offset.y * i;
+            CreateRow(basePosition.x, colsCount, offset.x, positionY);
+        }
+    }
+
+    private Vector2 GetBasePosition(int rowsCount, int colsCount, Vector2 offset)
+    {
+        
         float evenOffsetX = offset.x / 2 * (1 - colsCount % 2);
         float baseX = -offset.x * colsCount / 2 + evenOffsetX;
 
