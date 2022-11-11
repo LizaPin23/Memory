@@ -18,17 +18,17 @@ public class CardsGrid
     {
         float evenOffset = offset.x / 2 * (1 - cardsCount % 2);
         float baseX = -offset.x * cardsCount / 2 - evenOffset;
-
+        //float baseY = -offset.y * cardsCount / 2 - evenOffset;
         //TODO y 
 
         return new Vector2(baseX, 0);
     }
 
-    private void CreateRow(float baseX, int cardsInRow, float offset, float y)
+    private void CreateRow(float baseX, int cardsInRow, float offset, float baseY)
     {
         for(int i = 0; i < cardsInRow; i++)
         {
-            _positions.Add(new Vector2(baseX, y));
+            _positions.Add(new Vector2(baseX, baseY));
             baseX += offset;
         }
     }
