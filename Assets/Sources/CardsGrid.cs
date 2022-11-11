@@ -6,22 +6,32 @@ public class CardsGrid
 {
     private readonly List<Vector2> _positions;
 
-    public CardsGrid(int cardsCount, Vector2 offset)
+    public CardsGrid(int cardsCount, int colsCount, Vector2 offset)
     {
         _positions = new List<Vector2>(cardsCount);
 
-        Vector2 basePosition = GetBasePosition(cardsCount, offset);
+        Vector2 basePosition = GetBasePosition(cardsCount, colsCount, offset);
+
         CreateRow(basePosition.x, cardsCount, offset.x, basePosition.y);
+
     }
 
-    private Vector2 GetBasePosition(int cardsCount, Vector2 offset)
+    private Vector2 GetBasePosition(int cardsCount, int colsCount, Vector2 offset)
     {
-        float evenOffset = offset.x / 2 * (1 - cardsCount % 2);
-        float baseX = -offset.x * cardsCount / 2 - evenOffset;
-        //float baseY = -offset.y * cardsCount / 2 - evenOffset;
-        //TODO y 
+        int rowsCount = cardsCount / colsCount;
+        int colsInExtraRow = cardsCount % colsCount;
 
-        return new Vector2(baseX, 0);
+        if (colsInExtraRow != 0)
+            rowsCount++;
+
+        float evenOffsetX = offset.x / 2 * (1 - colsCount % 2);
+        float baseX = -offset.x * colsCount / 2 + evenOffsetX;
+
+        float evenOffsetY = offset.y / 2 * (1 - rowsCount % 2);
+        float baseY = offset.y * rowsCount / 2 - evenOffsetY;
+
+
+        return new Vector2(baseX, baseY);
     }
 
     private void CreateRow(float baseX, int cardsInRow, float offset, float baseY)
@@ -31,6 +41,11 @@ public class CardsGrid
             _positions.Add(new Vector2(baseX, baseY));
             baseX += offset;
         }
+    }
+
+    private void CreateColumn()
+    {
+
     }
 
 

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HomeWork51 : MonoBehaviour
 {
-    public int Five = 0;
+    [SerializeField] private int _number = 3;
 
     void Start()
     {
-        for (int i = 5; i > Five; i--)
+        for (int i = 1; i < 11; i++)
         {
-            Debug.Log(i);
+            Debug.Log(_number*i);
         }
     }
 }
