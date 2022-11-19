@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _factory: {fileID: 827328520}
   _levelConfig: {fileID: 11400000, guid: faeabd3925a246644b6898be7f4816a6, type: 2}
-  _offset: {x: 2, y: 2}
+  _offset: {x: 2, y: 3}
   _colsCount: 4
 --- !u!4 &1402223807
 Transform:

@@ -22,21 +22,17 @@ public class CardsGrid
 
         if (colsInExtraRow != 0)
         {
-            //float evenOffsetX = offset.x / 2 * (1 - colsInExtraRow % 2);
-            //float baseX = -offset.x * colsInExtraRow / 2 + evenOffsetX;
+            float baseX = GetBaseCoord(colsCount, -offset.x);
 
             float positionY = basePosition.y + rowsCount * offset.y;
-            //CreateRow(baseX, colsInExtraRow, offset.x, positionY);
+            CreateRow(baseX, colsInExtraRow, offset.x, positionY);
         }
     }
 
     private Vector2 GetBasePosition(int rowsCount, int colsCount, Vector2 offset)
     {
-        float evenOffsetX = offset.x / 2 * (1 - colsCount % 2);
-        float baseX = -offset.x * colsCount / 2 + evenOffsetX;
-
-        float evenOffsetY = offset.y / 2 * (1 - rowsCount % 2);
-        float baseY = offset.y * rowsCount / 2 - evenOffsetY;
+        float baseX = GetBaseCoord(colsCount, -offset.x);
+        float baseY = GetBaseCoord(rowsCount, offset.y);
 
         return new Vector2(baseX, baseY);
 
@@ -51,26 +47,13 @@ public class CardsGrid
         }
     }
 
-    //private Vector2 MethodX(int rowsCount, int colsCount, Vector2 offset)
-    //{
-    //    float evenOffsetX = offset.x / 2 * (1 - colsCount % 2);
-    //    float baseX = -offset.x * colsCount / 2 + evenOffsetX;
-
-    //    return new Vector2(baseX, 0);
-    //}
-
-    //private Vector2 MethodY(int rowsCount, int colsCount, Vector2 offset)
-    //{
-
-    //    float evenOffsetY = offset.y / 2 * (1 - rowsCount % 2);
-    //    float baseY = offset.y * rowsCount / 2 - evenOffsetY;
-
-    //    return new Vector2(0, baseY);
-    //}
-
-    private void CreateColumn()
+    private float GetBaseCoord(int itemsCount, float offset)
     {
+        float evenOffset = offset / 2 * (1 - itemsCount % 2);
+        int halfedItemsCount = itemsCount / 2;
+        float result = offset * halfedItemsCount - evenOffset;
 
+        return result;
     }
 
 
