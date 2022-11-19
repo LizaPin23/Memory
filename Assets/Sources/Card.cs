@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     [SerializeField] private ParticleSystem _effect;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private SpriteRenderer _rendererCardBack;
-    private string _iD;
+    public string ID { get; private set; }
     public event Action ChangeCard;
 
 
@@ -22,7 +22,7 @@ public class Card : MonoBehaviour
     public void Initialize(CardConfig config)
     {
         _renderer.sprite = config.photo;
-        _iD = config.iD;
+        ID = config.iD;
         SetRevealed(false);
     }
 
@@ -32,8 +32,13 @@ public class Card : MonoBehaviour
         _effect.Play();
     }
 
-    private void SetRevealed(bool value)
+    public void SetRevealed(bool value)
     {
         _rendererCardBack.enabled =!value;
+    }
+
+    public void HideCard()
+    {
+        gameObject.SetActive(false);
     }
 }

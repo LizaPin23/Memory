@@ -8,11 +8,9 @@ using UnityEngine.EventSystems;
 public class ClickHandler : MonoBehaviour, IPointerClickHandler
 {
     public event Action Clicked;
-   // [SerializeField] private ParticleSystem _effect;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //_effect.Play();
         Clicked?.Invoke();
     }
 }
