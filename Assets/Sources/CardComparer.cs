@@ -6,11 +6,7 @@ using UnityEngine;
 public class CardComparer
 {
     public event Action<bool> CardsCompared;
-
     private Card _lastOpenedCard;
-
-    
-
 
     public void OpenCard(Card card)
     {
@@ -24,7 +20,6 @@ public class CardComparer
             card.SetRevealed(true);
             _lastOpenedCard = card;
         }
-
     }
 
     private void Compare(Card cardOne, Card cardTwo)

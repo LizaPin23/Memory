@@ -12,17 +12,29 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        _score.ScoreEvent += ScoreResult;
+        //_score.ScoreEvent += ScoreResult;
     }
 
     private void Start()
     {
         _cards.CreateCards(_levelConfig);
+        _cards.CardsCompared += OnCardsCompared;
     }
 
-    public int ScoreResult(int score)
+    //public int ScoreResult(int score)
+    //{
+    //    //Debug.Log(score);
+    //}
+
+    private void OnCardsCompared(bool value)
     {
-        //Debug.Log(score);
+        if (value)
+        {
+            _score.Increase();
+        }
+        else
+        {
+            _score.TryDecrease()
+        }
     }
-
 }

@@ -11,8 +11,7 @@ public class Card : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private SpriteRenderer _rendererCardBack;
     public string ID { get; private set; }
-    public event Action ChangeCard;
-
+    public event Action<Card> Clicked;
 
     private void Awake()
     {
@@ -28,7 +27,7 @@ public class Card : MonoBehaviour
 
     private void OnClick()
     {
-        SetRevealed(true);
+        Clicked?.Invoke(this);
         _effect.Play();
     }
 
