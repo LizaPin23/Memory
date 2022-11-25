@@ -6,38 +6,34 @@ using UnityEngine;
 public class Score
 {
     private int _score;
+    private int _rightAnswerScore;
+    private int _wrongAnswerScore;
     public event Action<int> ScoreEvent;
 
-
-
-    public void Increase(int score)
+    public Score(int rightAnswerScore, int wrongAnswerScore)
     {
-        if (score < 0)
-        {
-            return;
-        }
-
-        _score += score;
-        ScoreEvent?.Invoke(score);
+        _rightAnswerScore = rightAnswerScore;
+        _wrongAnswerScore = wrongAnswerScore;
     }
 
-    public bool TryDecrease(int score)
-    {
-        if (score < 0)
-        {
-            Debug.LogError("Wrong value");
-            return false;
-        }
 
-        if (_score < score)
+    public void Increase()
+    {
+        _score += _rightAnswerScore;
+        ScoreEvent?.Invoke(_score);
+    }
+
+    public bool TryDecrease()
+    {
+        if (_score < _wrongAnswerScore)
         {
             _score = 0;
-            ScoreEvent?.Invoke(score);
+            ScoreEvent?.Invoke(_score);
             return false;
         }
 
-        _score -= score;
-        ScoreEvent?.Invoke(score);
+        _score -= _wrongAnswerScore;
+        ScoreEvent?.Invoke(_score);
         return true;
     }
 }

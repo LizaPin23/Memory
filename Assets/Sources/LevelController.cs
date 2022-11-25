@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] private LevelConfig _levelConfig;
     [SerializeField] private Cards _cards;
-    [SerializeField] private Score _score;
+    private Score _score;
     [SerializeField] private CardComparer _cardComparer;
 
     private void Awake()
@@ -15,10 +15,14 @@ public class LevelController : MonoBehaviour
         //_score.ScoreEvent += ScoreResult;
     }
 
+    
+
     private void Start()
     {
         _cards.CreateCards(_levelConfig);
         _cards.CardsCompared += OnCardsCompared;
+        _score = new Score(_levelConfig.RightAnswerScore , _levelConfig.WrongAnswerScore);
+        
     }
 
     //public int ScoreResult(int score)
@@ -34,7 +38,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            _score.TryDecrease()
+            _score.TryDecrease();
         }
     }
 }
