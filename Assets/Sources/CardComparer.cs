@@ -9,6 +9,9 @@ public class CardComparer
 
     private Card _lastOpenedCard;
 
+    
+
+
     public void OpenCard(Card card)
     {
         if (_lastOpenedCard != null)
