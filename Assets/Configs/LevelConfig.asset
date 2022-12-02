@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5d8ab29c692f0a4cb40ecb60aec4e27, type: 2}
   - {fileID: 11400000, guid: 79baad41e10a5374badcda29bdaa9e30, type: 2}
   - {fileID: 11400000, guid: 2991fc9fa0a3c454bb2afb66ee214c06, type: 2}
+  _rightAnswerScore: 5
+  _wrongAnswerScore: 3
