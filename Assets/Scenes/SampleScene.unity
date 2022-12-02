@@ -293,7 +293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1185667612}
   - component: {fileID: 1185667611}
-  - component: {fileID: 1185667610}
   m_Layer: 0
   m_Name: CameraUI
   m_TagString: Untagged
@@ -301,14 +300,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1185667610
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185667609}
-  m_Enabled: 1
 --- !u!20 &1185667611
 Camera:
   m_ObjectHideFlags: 0
@@ -464,6 +455,7 @@ MonoBehaviour:
   _levelConfig: {fileID: 11400000, guid: faeabd3925a246644b6898be7f4816a6, type: 2}
   _cards: {fileID: 827328522}
   _scoreText: {fileID: 1661204566}
+  _mainRaycaster: {fileID: 519420030}
 --- !u!4 &1402223807
 Transform:
   m_ObjectHideFlags: 0

@@ -7,40 +7,42 @@ public class CardComparer
 {
     public event Action<bool> CardsCompared;
     private Card _lastOpenedCard;
+    private float _revealDelay;
 
-    public void OpenCard(Card card)
+    public CardComparer(float revealDelay)
     {
-        if (_lastOpenedCard != null)
-        {
-            Compare(_lastOpenedCard, card);
-            _lastOpenedCard = null;
-        }
-        else
-        {
-            card.SetRevealed(true);
-            _lastOpenedCard = card;
-        }
+        _revealDelay = revealDelay;
     }
 
-    private void Compare(Card cardOne, Card cardTwo)
+    public bool HasCard => _lastOpenedCard != null;
+
+    public void RememberCard(Card card)
     {
-        bool result = cardOne.ID == cardTwo.ID;
+        _lastOpenedCard = card;
+    }
+
+    public IEnumerator Compare(Card nextCard)
+    {
+        yield return new WaitForSeconds(_revealDelay);
+
+        bool result = _lastOpenedCard.ID == nextCard.ID;
 
         if(result == true)
         {
-            cardOne.HideCard();
-            cardTwo.HideCard();
-            cardOne.OnRightChoice();
-            cardTwo.OnRightChoice();
+            _lastOpenedCard.HideCard();
+            nextCard.HideCard();
+            _lastOpenedCard.OnRightChoice();
+            nextCard.OnRightChoice();
         }
         else
         {
-            cardOne.SetRevealed(false);
-            cardTwo.SetRevealed(false);
-            cardOne.OnWrongChoice();
-            cardTwo.OnWrongChoice();
+            _lastOpenedCard.SetRevealed(false);
+            nextCard.SetRevealed(false);
+            _lastOpenedCard.OnWrongChoice();
+            nextCard.OnWrongChoice();
         }
 
         CardsCompared?.Invoke(result);
+        _lastOpenedCard = null;
     }
 }

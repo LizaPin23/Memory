@@ -9,14 +9,15 @@ public class Cards : MonoBehaviour
     [SerializeField] private Vector2 _offset = new Vector2(2f, 3f);
     [SerializeField] private int _colsCount = 4;
 
-    public event Action<bool> CardsCompared; 
+    public event Action<bool> CardsCompared;
+    public event Action CardComparisonStarted; 
 
     private CardComparer _comparer;
     private List<Card> _cards;
 
     public void CreateCards(LevelConfig config)
     {
-        _comparer = new CardComparer();
+        _comparer = new CardComparer(config.CardRevealDelay);
         _cards = new List<Card>();
         _comparer.CardsCompared += OnCardsCompared;
 
@@ -36,7 +37,17 @@ public class Cards : MonoBehaviour
 
     private void OnCardSelected(Card card)
     {
-        _comparer.OpenCard(card);
+        card.SetRevealed(true);
+
+        if (_comparer.HasCard)
+        {
+            CardComparisonStarted?.Invoke();
+            StartCoroutine(_comparer.Compare(card));
+        }
+        else
+        {
+            _comparer.RememberCard(card);
+        }
     }
 
     private void OnCardsCompared(bool value)
