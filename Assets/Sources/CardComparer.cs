@@ -30,11 +30,15 @@ public class CardComparer
         {
             cardOne.HideCard();
             cardTwo.HideCard();
+            cardOne.OnRightChoice();
+            cardTwo.OnRightChoice();
         }
         else
         {
             cardOne.SetRevealed(false);
             cardTwo.SetRevealed(false);
+            cardOne.OnWrongChoice();
+            cardTwo.OnWrongChoice();
         }
 
         CardsCompared?.Invoke(result);

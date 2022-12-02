@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Score
 {
-    private int _score;
+    public int Value { get; private set; }
     private int _rightAnswerScore;
     private int _wrongAnswerScore;
     public event Action<int> ScoreEvent;
@@ -19,21 +19,21 @@ public class Score
 
     public void Increase()
     {
-        _score += _rightAnswerScore;
-        ScoreEvent?.Invoke(_score);
+        Value += _rightAnswerScore;
+        ScoreEvent?.Invoke(Value);
     }
 
     public bool TryDecrease()
     {
-        if (_score < _wrongAnswerScore)
+        if (Value < _wrongAnswerScore)
         {
-            _score = 0;
-            ScoreEvent?.Invoke(_score);
+            Value = 0;
+            ScoreEvent?.Invoke(Value);
             return false;
         }
 
-        _score -= _wrongAnswerScore;
-        ScoreEvent?.Invoke(_score);
+        Value -= _wrongAnswerScore;
+        ScoreEvent?.Invoke(Value);
         return true;
     }
 }

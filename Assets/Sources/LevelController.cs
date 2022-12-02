@@ -7,28 +7,23 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] private LevelConfig _levelConfig;
     [SerializeField] private Cards _cards;
-    private Score _score;
     [SerializeField] private CardComparer _cardComparer;
+    [SerializeField] private ScoreTextView _scoreText;
+
+    private Score _score;
 
     private void Awake()
     {
-        //_score.ScoreEvent += ScoreResult;
+        _score = new Score(_levelConfig.RightAnswerScore, _levelConfig.WrongAnswerScore);
+        _score.ScoreEvent += _scoreText.OnShowScoreText;
+        _scoreText.OnShowScoreText(_score.Value);
     }
-
-    
 
     private void Start()
     {
         _cards.CreateCards(_levelConfig);
         _cards.CardsCompared += OnCardsCompared;
-        _score = new Score(_levelConfig.RightAnswerScore , _levelConfig.WrongAnswerScore);
-        
     }
-
-    //public int ScoreResult(int score)
-    //{
-    //    //Debug.Log(score);
-    //}
 
     private void OnCardsCompared(bool value)
     {

@@ -7,7 +7,9 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour
 {
     [SerializeField] private ClickHandler _clickHandler;
-    [SerializeField] private ParticleSystem _effect;
+    [SerializeField] private ParticleSystem _rightChoiceEffect;
+    [SerializeField] private ParticleSystem _wrongChoiceEffect;
+
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private SpriteRenderer _rendererCardBack;
     public string ID { get; private set; }
@@ -28,7 +30,6 @@ public class Card : MonoBehaviour
     private void OnClick()
     {
         Clicked?.Invoke(this);
-        _effect.Play();
     }
 
     public void SetRevealed(bool value)
@@ -38,6 +39,17 @@ public class Card : MonoBehaviour
 
     public void HideCard()
     {
-        gameObject.SetActive(false);
+        _renderer.enabled = false;
+        _rendererCardBack.enabled = false;
+    }
+
+    public void OnRightChoice()
+    {
+        _rightChoiceEffect.Play();
+    }
+
+    public void OnWrongChoice()
+    {
+        _wrongChoiceEffect.Play();
     }
 }
