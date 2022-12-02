@@ -7,8 +7,14 @@ using UnityEngine.UI;
 public class ScoreTextView : MonoBehaviour
 {
     [SerializeField] private Text _text;
+    [SerializeField] private Score _value;
 
-    public void ShowScoreText(int _score)
+    private void Awake()
+    {
+        _value.ScoreEvent += OnShowScoreText;
+    }
+
+    public void OnShowScoreText(int _score)
     {
         _text.text = _score.ToString();
     }
