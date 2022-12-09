@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 2683473880889801923}
   - component: {fileID: 2683473880889801924}
   - component: {fileID: 7642959926975222863}
+  - component: {fileID: 2307906292267666046}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -166,8 +167,8 @@ MonoBehaviour:
   _clickHandler: {fileID: 2683473880889801924}
   _rightChoiceEffect: {fileID: 6614535485386647710}
   _wrongChoiceEffect: {fileID: 8821846753539767625}
-  _renderer: {fileID: 3217794297384459330}
-  _rendererCardBack: {fileID: 3567536237730710953}
+  _animator: {fileID: 2307906292267666046}
+  _photoRenderer: {fileID: 3217794297384459330}
 --- !u!61 &2683473880889801923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,6 +226,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2307906292267666046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683473880889801925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26a6035f73c45049ad78d8f27dde37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animatorCard: {fileID: 7642959926975222863}
+  _revealedName: Revealed
+  _visibleName: Visible
 --- !u!1 &2683473881113181430
 GameObject:
   m_ObjectHideFlags: 0

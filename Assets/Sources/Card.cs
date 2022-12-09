@@ -9,9 +9,9 @@ public class Card : MonoBehaviour
     [SerializeField] private ClickHandler _clickHandler;
     [SerializeField] private ParticleSystem _rightChoiceEffect;
     [SerializeField] private ParticleSystem _wrongChoiceEffect;
+    [SerializeField] private CardAnimator _animator;
+    [SerializeField] private SpriteRenderer _photoRenderer;
 
-    [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private SpriteRenderer _rendererCardBack;
     public string ID { get; private set; }
     public event Action<Card> Clicked;
 
@@ -22,9 +22,10 @@ public class Card : MonoBehaviour
 
     public void Initialize(CardConfig config)
     {
-        _renderer.sprite = config.photo;
+        _photoRenderer.sprite = config.photo;
         ID = config.iD;
         SetRevealed(false);
+        _animator.SetVisible(true);
     }
 
     private void OnClick()
@@ -34,13 +35,12 @@ public class Card : MonoBehaviour
 
     public void SetRevealed(bool value)
     {
-        _rendererCardBack.enabled =!value;
+        _animator.SetRevealed(value);
     }
 
     public void HideCard()
     {
-        _renderer.enabled = false;
-        _rendererCardBack.enabled = false;
+        _animator.SetVisible(false);
     }
 
     public void OnRightChoice()

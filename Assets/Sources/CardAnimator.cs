@@ -5,20 +5,16 @@ using UnityEngine;
 public class CardAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animatorCard;
-    [SerializeField] private string _boolName;
+    [SerializeField] private string _revealedName = "Revealed";
+    [SerializeField] private string _visibleName = "Visible";
 
-    public void Idle()
+    public void SetRevealed(bool value)
     {
-        _animatorCard.SetBool(_boolName, false);
+        _animatorCard.SetBool(_revealedName, value);
     }
 
-    public void Perevorot1()
+    public void SetVisible(bool value)
     {
-        _animatorCard.SetBool(_boolName, true);
-    }
-
-    public void Perevorot2()
-    {
-        _animatorCard.SetBool(_boolName, false);
+        _animatorCard.SetBool(_visibleName, value);
     }
 }
