@@ -11,7 +11,7 @@ public class Card : MonoBehaviour
     [SerializeField] private ParticleSystem _wrongChoiceEffect;
     [SerializeField] private CardAnimator _animator;
     [SerializeField] private SpriteRenderer _photoRenderer;
-
+    private bool _revealed;
     public string ID { get; private set; }
     public event Action<Card> Clicked;
 
@@ -30,12 +30,17 @@ public class Card : MonoBehaviour
 
     private void OnClick()
     {
-        Clicked?.Invoke(this);
+        if(_revealed == false)
+        {
+            Clicked?.Invoke(this);
+        }
+        
     }
 
     public void SetRevealed(bool value)
     {
         _animator.SetRevealed(value);
+        _revealed = value;
     }
 
     public void HideCard()
