@@ -54,4 +54,16 @@ public class Cards : MonoBehaviour
     {
         CardsCompared?.Invoke(value);
     }
+
+    public void DeleteCards()
+    {
+        int cardsCount = _cards.Count;
+
+        for (int i = 0; i < cardsCount; i++)
+        {
+            Destroy(_cards[i].gameObject);
+        }
+
+        _cards.Clear();
+    }
 }

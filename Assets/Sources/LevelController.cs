@@ -20,13 +20,23 @@ public class LevelController : MonoBehaviour
         _score.ScoreEvent += _scoreText.OnShowScoreText;
         _scoreText.OnShowScoreText(_score.Value);
         _cards.CardComparisonStarted += DisableInput;
+        _cards.CardsCompared += OnCardsCompared;
         ActivateInput();
     }
 
     private void Start()
     {
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         _cards.CreateCards(_levelConfig);
-        _cards.CardsCompared += OnCardsCompared;
+    }
+
+    public void FinishGame()
+    {
+        _cards.DeleteCards();
     }
 
     private void OnCardsCompared(bool value)
