@@ -505,13 +505,14 @@ GameObject:
   - component: {fileID: 553889657}
   - component: {fileID: 553889659}
   - component: {fileID: 553889658}
+  - component: {fileID: 553889660}
   m_Layer: 5
   m_Name: GameFinishMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &553889657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -568,6 +569,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 553889658}
   _visibleName: VisibleBool
+--- !u!225 &553889660
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553889656}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &773845381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1098,7 @@ MonoBehaviour:
   _cards: {fileID: 827328522}
   _scoreText: {fileID: 1661204566}
   _mainRaycaster: {fileID: 519420030}
-  _gameFinishMenu: {fileID: 0}
+  _gameFinishMenu: {fileID: 553889659}
 --- !u!4 &1402223807
 Transform:
   m_ObjectHideFlags: 0
