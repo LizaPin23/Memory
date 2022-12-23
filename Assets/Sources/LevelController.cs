@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour
         _scoreText.OnShowScoreText(_score.Value);
         _cards.CardComparisonStarted += DisableInput;
         _cards.CardsCompared += OnCardsCompared;
+        _cards.AllCardsMatched += FinishGame;
         GameFinish += _gameFinishMenu.Show;
 
         ActivateInput();

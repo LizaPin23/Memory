@@ -2,15 +2,18 @@
 
 public class GameFinishMenu : MonoBehaviour
 {
-    [SerializeField] private Canvas _canvas;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private string _visibleName = "VisibleBool";
 
     public void Show()
     {
-        _canvas.enabled = true;
+        _animator.SetBool(_visibleName, true);
     }
 
     public void Hide()
     {
-        _canvas.enabled = false;
+        _animator.SetBool(_visibleName, false);
     }
+
+
 }

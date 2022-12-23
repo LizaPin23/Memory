@@ -15,6 +15,7 @@ public class Cards : MonoBehaviour
 
     private CardComparer _comparer;
     private List<Card> _cards;
+    private int _parsOnSc;
 
     public void CreateCards(LevelConfig config)
     {
@@ -34,6 +35,8 @@ public class Cards : MonoBehaviour
                 card.Clicked += OnCardSelected;
             }
         }
+
+        _parsOnSc = _cards.Count / 2;
     }
 
     private void OnCardSelected(Card card)
@@ -54,6 +57,15 @@ public class Cards : MonoBehaviour
     private void OnCardsCompared(bool value)
     {
         CardsCompared?.Invoke(value);
+        if(value == true)
+        {
+            _parsOnSc--;
+            if(_parsOnSc == 0)
+            {
+                AllCardsMatched?.Invoke();
+            }
+        }
+
     }
 
     public void DeleteCards()
