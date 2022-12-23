@@ -39,8 +39,9 @@ public class Score
         return true;
     }
 
-    //public void NullScore()
-    //{
-
-    //}
+    public void NullScore()
+    {
+        Value = 0;
+        ScoreEvent?.Invoke(Value);
+    }
 }

@@ -10,7 +10,8 @@ public class Cards : MonoBehaviour
     [SerializeField] private int _colsCount = 4;
 
     public event Action<bool> CardsCompared;
-    public event Action CardComparisonStarted; 
+    public event Action CardComparisonStarted;
+    public event Action AllCardsMatched;
 
     private CardComparer _comparer;
     private List<Card> _cards;
