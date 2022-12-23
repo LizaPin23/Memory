@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private CardComparer _cardComparer;
     [SerializeField] private ScoreTextView _scoreText;
     [SerializeField] private Physics2DRaycaster _mainRaycaster;
+    //public event Action<bool> GameFinish;
 
     private Score _score;
 
@@ -37,6 +38,7 @@ public class LevelController : MonoBehaviour
     public void FinishGame()
     {
         _cards.DeleteCards();
+        //GameFinish?.Invoke(true);
     }
 
     private void OnCardsCompared(bool value)

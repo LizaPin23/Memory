@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class Score
 {
@@ -9,13 +11,13 @@ public class Score
     private int _rightAnswerScore;
     private int _wrongAnswerScore;
     public event Action<int> ScoreEvent;
+    //private LevelController _levelController;
 
     public Score(int rightAnswerScore, int wrongAnswerScore)
     {
         _rightAnswerScore = rightAnswerScore;
         _wrongAnswerScore = wrongAnswerScore;
     }
-
 
     public void Increase()
     {
@@ -36,4 +38,9 @@ public class Score
         ScoreEvent?.Invoke(Value);
         return true;
     }
+
+    //public void NullScore()
+    //{
+
+    //}
 }
