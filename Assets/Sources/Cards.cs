@@ -15,12 +15,14 @@ public class Cards : MonoBehaviour
 
     private CardComparer _comparer;
     private List<Card> _cards;
+    private SoundController _soundController;
     private int _parsOnSc;
 
-    public void CreateCards(LevelConfig config)
+    public void CreateCards(LevelConfig config, SoundController soundController)
     {
         _comparer = new CardComparer(config.CardRevealDelay);
         _cards = new List<Card>();
+        _soundController = soundController;
         _comparer.CardsCompared += OnCardsCompared;
 
         int cardsCount = config.Cards.Length * config.CardsOfSameType;
@@ -42,6 +44,7 @@ public class Cards : MonoBehaviour
     private void OnCardSelected(Card card)
     {
         card.SetRevealed(true);
+        _soundController.ClickSound();
 
         if (_comparer.HasCard)
         {

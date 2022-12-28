@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private Cards _cards;
     [SerializeField] private CardComparer _cardComparer;
     [SerializeField] private ScoreTextView _scoreText;
+    [SerializeField] private SoundController _soundController;
     [SerializeField] private Physics2DRaycaster _mainRaycaster;
     [SerializeField] private GameFinishMenu _gameFinishMenu;
 
@@ -37,7 +38,7 @@ public class LevelController : MonoBehaviour
 
     public void StartGame()
     {
-        _cards.CreateCards(_levelConfig);
+        _cards.CreateCards(_levelConfig, _soundController);
         _score.NullScore();
         _gameFinishMenu.Hide();
     }
@@ -56,10 +57,13 @@ public class LevelController : MonoBehaviour
         if (value)
         {
             _score.Increase();
+            _soundController.RightAnwser();
+
         }
         else
         {
             _score.TryDecrease();
+            _soundController.WrongAnwser();
         }
     }
 
