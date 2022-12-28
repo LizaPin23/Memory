@@ -8,9 +8,9 @@ public class ScoreTextView : MonoBehaviour
 {
     [SerializeField] private Text _text;
 
-    public void OnShowScoreText(int _score)
+    public void OnShowScoreText(int score)
     {
-        _text.text = _score.ToString();
+        _text.text = score.ToString();
     }
         
 }

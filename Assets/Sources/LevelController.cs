@@ -45,6 +45,7 @@ public class LevelController : MonoBehaviour
     public void FinishGame()
     {
         _cards.DeleteCards();
+        _gameFinishMenu.SetFinalScore(_score.Value);
         GameFinish?.Invoke();
     }
 
